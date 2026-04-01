@@ -30,7 +30,7 @@ def generate_launch_description():
                     )
                 ),
                 launch_arguments={
-                    "use_sim_time": "true",
+                    "use_sim_time": LaunchConfiguration("use_sim_time"),
                     "params_file": FindPackageShare("ardupilot_cartographer").find(
                         "ardupilot_cartographer"
                     )
@@ -92,6 +92,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "rviz", default_value="true", description="Open RViz."
             ),
+            DeclareLaunchArgument("use_sim_time", default_value="true"),
             navigation,
             twist_stamper,
             rviz,
